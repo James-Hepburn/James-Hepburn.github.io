@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Gabbie's Recipe Book</title>
+
+  <style>
+    body {
+      background-color: #FFF3E0;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #FFCCBC;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      height: 50px;
+      justify-content: space-between;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    nav {
+      padding: 0 2%;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      flex-grow: 1;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+      margin-right: 4%;
+    }
+
+    .logo {
+      height: 50px;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        height: auto;
+        flex-direction: column;
+        padding: 10px 0;
+      }
+
+      .logo {
+        height: 40px;
+        margin-bottom: 10px;
+      }
+
+      nav {
+        padding: 0;
+        flex-direction: column;
+      }
+
+      nav a {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+
+    .recipe-card {
+      width: 300px;
+      margin: 20px auto;
+      border: 1px solid #FFCCBC;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #FFF;
+      padding: 20px;
+    }
+
+    .recipe-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .food-name {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    .card-label {
+      font-weight: bold;
+      color: #FF7043;
+      margin-top: 10px;
+    }
+
+    .recipe-card ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .recipe-card li {
+      background-color: #FFE0B2;
+      margin: 5px 0;
+      padding: 5px;
+      border-radius: 4px;
+    }
+
+    .search-bar {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    .search-bar input[type="text"] {
+      width: 200px;
+      padding: 5px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .search-bar button {
+      padding: 8px 15px;
+      background-color: #FF9800;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-bar button:hover {
+      background-color: #FFA726;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <div class = "header-content">
+      <img src = "images/logo.png" class = "logo">
+      <nav>
+        <a href = "index.html">Home</a>
+        <a href = "recipes.html">Recipes</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search...">
+    <button onclick = "filterRecipes ()">Search</button>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/0.jpeg">
+    <p class = "food-name">Pizza Wontons</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Wonton wrappers</li>
+      <li>Pepperoni</li>
+      <li>Cheese</li>
+    </ul>
+    <p class = "card-label">Time = 30 to 45 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/1.jpeg">
+    <p class = "food-name">Teryaki Salmon</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Salmon filets</li>
+      <li>Rice</li>
+      <li>Brown sugar</li>
+      <li>Soy sauce</li>
+    </ul>
+    <p class = "card-label">Seasonings</p>
+    <ul>
+      <li>Ginger</li>
+      <li>Garlic</li>
+      <li>Pepper</li>
+      <li>Salt</li>
+      <li>Paprika</li>
+    </ul>
+    <p class = "card-label">Time = 25 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/2.jpeg">
+    <p class = "food-name">Pesto Pizza</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Naan</li>
+      <li>Pesto</li>
+      <li>Mozerella cheese</li>
+    </ul>
+    <p class = "card-label">Time = 10 to 15 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/3.webp">
+    <p class = "food-name">Chicken and Scallion Wontons</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Ground chicken</li>
+      <li>Scallions</li>
+      <li>Soy sauce</li>
+    </ul>
+    <p class = "card-label">Time = 45 to 60 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/4.jpeg">
+    <p class = "food-name">Ravioli Pasta</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Ravioli</li>
+      <li>Pasta sauce</li>
+      <li>Mozerella cheese</li>
+    </ul>
+    <p class = "card-label">Time = 15 to 20 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/5.jpeg">
+    <p class = "food-name">Sausage Pasta Skillet</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Kiebalsa/Chicken sausage</li>
+      <li>Pasta</li>
+      <li>Peppers</li>
+    </ul>
+    <p class = "card-label">Time = 20 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/6.jpeg">
+    <p class = "food-name">Meatballs and Butter Pasta</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Butter</li>
+      <li>Pasta</li>
+      <li>Parmesan</li>
+      <li>Ground turkey/chicken</li>
+    </ul>
+    <p class = "card-label">Time = 25 to 40 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/7.jpeg">
+    <p class = "food-name">Caesar Salad</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Chicken</li>
+      <li>Lettuce/Kale</li>
+      <li>Parmesean</li>
+      <li>Salad dressing</li>
+    </ul>
+    <p class = "card-label">Time = 20 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/8.jpeg">
+    <p class = "food-name">Chicken and Cold Pasta Salad</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Chicken</li>
+      <li>Pasta</li>
+      <li>Kale</li>
+      <li>Dried tomatoes</li>
+    </ul>
+    <p class = "card-label">Seasonings</p>
+    <ul>
+      <li>Pepper</li>
+    </ul>
+    <p class = "card-label">Time = 15 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/9.jpeg">
+    <p class = "food-name">Gnocchi</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Gnocchi</li>
+      <li>Tomato sauce</li>
+      <li>Mozerella cheese</li>
+    </ul>
+    <p class = "card-label">Time = 10 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/10.jpeg">
+    <p class = "food-name">French Toast</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Bread</li>
+      <li>Eggs</li>
+      <li>Brown sugar</li>
+      <li>Cinnamon</li>
+      <li>Syrup</li>
+      <li>Milk</li>
+    </ul>
+    <p class = "card-label">Time = 15 to 20 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/11.jpeg">
+    <p class = "food-name">Mac and Cheese</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Milk</li>
+      <li>Macaroni</li>
+      <li>Flour</li>
+      <li>Chedar cheese</li>
+    </ul>
+    <p class = "card-label">Time = 20 minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/12.jpeg">
+    <p class = "food-name">Pork Loin and Rice</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Pork loin</li>
+      <li>Rice</li>
+      <li>Onions</li>
+      <li>Potatoes</li>
+    </ul>
+    <p class = "card-label">Time = 60+ minutes</p>
+  </div>
+
+  <div class = "recipe-card">
+    <img src = "images/13.webp">
+    <p class = "food-name">Chicken Picata</p>
+    <p class = "card-label">Ingredients</p>
+    <ul>
+      <li>Chicken</li>
+      <li>Lemons</li>
+      <li>Pasta</li>
+      <li>Butter</li>
+      <li>Vinegar</li>
+    </ul>
+    <p class = "card-label">Time = 25 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/14.jpeg">
+    <p class="food-name">Chicken Fried Tacos</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Tortillas</li>
+      <li>Chicken</li>
+      <li>Cheese</li>
+      <li>Seasoning packet</li>
+    </ul>
+    <p class="card-label">Time = 15 to 20 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/15.jpeg">
+    <p class="food-name">Dumpling Egg Drop Soup</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Chicken broth</li>
+      <li>Egg</li>
+      <li>Soy sauce</li>
+      <li>Green onions</li>
+    </ul>
+    <p class="card-label">Time = 10 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/16.webp">
+    <p class="food-name">Burgers</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Ground turkey</li>
+      <li>Buns</li>
+      <li>Cheese</li>
+    </ul>
+    <p class="card-label">Time = 25 to 45 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/17.jpeg">
+    <p class="food-name">Teriyaki Rice Noodles</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Salmon/Chicken/Vegetables</li>
+      <li>Rice noodles</li>
+      <li>Edamame</li>
+      <li>Peppers</li>
+      <li>Onions</li>
+      <li>Soy sauce</li>
+      <li>Brown sugar</li>
+    </ul>
+    <p class="card-label">Time = 20 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/18.jpeg">
+    <p class="food-name">Sheet Pan Chicken</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Chicken</li>
+      <li>Rice</li>
+      <li>Potatoes/Asparagus</li>
+      <li>Broccoli</li>
+    </ul>
+    <p class="card-label">Time = 30 to 45 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/19.jpeg">
+    <p class="food-name">Salmon Croquettes</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Canned salmon</li>
+      <li>Peppers</li>
+      <li>Onions</li>
+      <li>Flour</li>
+      <li>Mayonnaise</li>
+    </ul>
+    <p class="card-label">Time = 30 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/20.jpeg">
+    <p class="food-name">Loaded Fries</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Bacon</li>
+      <li>Pre-cut fries</li>
+      <li>Cheese</li>
+      <li>Onions</li>
+    </ul>
+    <p class="card-label">Time = 10 to 15 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/21.jpeg">
+    <p class="food-name">Sandwich</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Turkey/Chicken</li>
+      <li>Bread</li>
+    </ul>
+    <p class="card-label">Time = 5 to 10 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/22.jpeg">
+    <p class="food-name">Butter Parmesan Pasta</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Butter</li>
+      <li>Parmesan</li>
+      <li>Pasta</li>
+    </ul>
+    <p class="card-label">Time = 7 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/23.jpeg">
+    <p class="food-name">Knorr Pasta Dupe</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Pasta</li>
+      <li>Cheddar</li>
+      <li>Chicken bouillon</li>
+    </ul>
+    <p class="card-label">Time = 15 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/24.webp">
+    <p class="food-name">Ricotta Toast</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Ciabatta/Sourdough bread</li>
+      <li>Ricotta</li>
+    </ul>
+    <p class="card-label">Time = 5 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/25.jpeg">
+    <p class="food-name">Oatmeal and Apples</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Apples</li>
+      <li>Brown sugar</li>
+      <li>Butter</li>
+      <li>Oatmeal</li>
+    </ul>
+    <p class="card-label">Time = 15 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/26.jpeg">
+    <p class="food-name">Quesadilla</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Turkey</li>
+      <li>Taco seasoning</li>
+      <li>Peppers</li>
+    </ul>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/27.jpeg">
+    <p class="food-name">Grilled Cheese</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Cheese</li>
+      <li>Butter</li>
+      <li>Bread</li>
+    </ul>
+    <p class="card-label">Time = 10 minutes</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/28.jpeg">
+    <p class="food-name">Pho Soup</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Pho mix</li>
+      <li>Egg</li>
+      <li>Noodles</li>
+    </ul>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/29.jpg">
+    <p class="food-name">Chicken Bowls</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Rice</li>
+      <li>Chicken</li>
+    </ul>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/30.webp">
+    <p class="food-name">French Toast with Berry Compote and Cream Cheese</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Bread</li>
+      <li>Berry compote</li>
+      <li>Cream cheese</li>
+    </ul>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/31.jpeg">
+    <p class="food-name">Chicken Kebab</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Chicken</li>
+      <li>Peppers</li>
+      <li>Rice</li>
+    </ul>
+  </div>
+
+  <div class="recipe-card">
+    <img src="images/32.jpeg">
+    <p class="food-name">Tomato Soup</p>
+    <p class="card-label">Ingredients</p>
+    <ul>
+      <li>Canned tomatoes</li>
+      <li>Heavy cream</li>
+      <li>Garlic</li>
+      <li>Onion</li>
+      <li>Chicken broth</li>
+    </ul>
+    <p class="card-label">Time = 15 to 25 minutes</p>
+  </div>
+
+  <script>
+    function filterRecipes() {
+      var input = document.querySelector('.search-bar input[type="text"]');
+      var filter = input.value.toUpperCase();
+      var recipeCards = document.querySelectorAll('.recipe-card');
+
+      recipeCards.forEach(function(card) {
+        var foodName = card.querySelector('.food-name').textContent.toUpperCase();
+        if (foodName.includes(filter) || filter.length === 0) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    window.onload = filterRecipes;
+  </script>
+</body>
+
+</html>
